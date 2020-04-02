@@ -382,7 +382,7 @@ typedef NS_ERROR_ENUM(RACSignalErrorDomain, RACSignalError) {
 - (RACSignal *)takeUntilReplacement:(RACSignal *)replacement RAC_WARN_UNUSED_RESULT;
 
 /// Subscribes to the returned signal when an error occurs.
-- (RACSignal *)catch:(RACSignal * (^)(NSError * _Nonnull error))catchBlock RAC_WARN_UNUSED_RESULT;
+- (RACSignal *)catch:(RACSignal * (^)(NSError * _Nullable error))catchBlock RAC_WARN_UNUSED_RESULT;
 
 /// Subscribes to the given signal when an error occurs.
 - (RACSignal *)catchTo:(RACSignal *)signal RAC_WARN_UNUSED_RESULT;
