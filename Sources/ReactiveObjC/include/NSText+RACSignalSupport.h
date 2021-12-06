@@ -6,18 +6,22 @@
 //  Copyright (c) 2013 GitHub, Inc. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
-@class RACSignal<__covariant ValueType>;
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface NSText (RACSignalSupport)
-
-/// Returns a signal which sends the current `string` of the receiver, then the
-/// new value any time it changes.
-- (RACSignal<NSString *> *)rac_textSignal;
-
-@end
-
-NS_ASSUME_NONNULL_END
+//#import <Foundation/Foundation.h>
+//
+//#if !TARGET_OS_IOS
+//#import <Cocoa/Cocoa.h>
+//#endif
+//
+//@class RACSignal<__covariant ValueType>;
+//
+//NS_ASSUME_NONNULL_BEGIN
+//
+//@interface NSText (RACSignalSupport)
+//
+///// Returns a signal which sends the current `string` of the receiver, then the
+///// new value any time it changes.
+//- (RACSignal<NSString *> *)rac_textSignal;
+//
+//@end
+//
+//NS_ASSUME_NONNULL_END

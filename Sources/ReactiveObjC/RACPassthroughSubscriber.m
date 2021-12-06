@@ -9,26 +9,26 @@
 #import "RACPassthroughSubscriber.h"
 #import "RACCompoundDisposable.h"
 #import "RACSignal.h"
-#import "RACSignalProvider.h"
+// #import "RACSignalProvider.h"
 
-#if !defined(DTRACE_PROBES_DISABLED) || !DTRACE_PROBES_DISABLED
+// #if !defined(DTRACE_PROBES_DISABLED) || !DTRACE_PROBES_DISABLED
 
-static const char *cleanedDTraceString(NSString *original) {
-	return [original stringByReplacingOccurrencesOfString:@"\\s+" withString:@" " options:NSRegularExpressionSearch range:NSMakeRange(0, original.length)].UTF8String;
-}
+// static const char *cleanedDTraceString(NSString *original) {
+// 	return [original stringByReplacingOccurrencesOfString:@"\\s+" withString:@" " options:NSRegularExpressionSearch range:NSMakeRange(0, original.length)].UTF8String;
+// }
 
-static const char *cleanedSignalDescription(RACSignal *signal) {
-	NSString *desc = signal.description;
+// static const char *cleanedSignalDescription(RACSignal *signal) {
+// 	NSString *desc = signal.description;
 
-	NSRange range = [desc rangeOfString:@" name:"];
-	if (range.location != NSNotFound) {
-		desc = [desc stringByReplacingCharactersInRange:range withString:@""];
-	}
+// 	NSRange range = [desc rangeOfString:@" name:"];
+// 	if (range.location != NSNotFound) {
+// 		desc = [desc stringByReplacingCharactersInRange:range withString:@""];
+// 	}
 
-	return cleanedDTraceString(desc);
-}
+// 	return cleanedDTraceString(desc);
+// }
 
-#endif
+// #endif
 
 @interface RACPassthroughSubscriber ()
 
@@ -70,9 +70,9 @@ static const char *cleanedSignalDescription(RACSignal *signal) {
 - (void)sendNext:(id)value {
 	if (self.disposable.disposed) return;
 
-	if (RACSIGNAL_NEXT_ENABLED()) {
-		RACSIGNAL_NEXT(cleanedSignalDescription(self.signal), cleanedDTraceString(self.innerSubscriber.description), cleanedDTraceString([value description]));
-	}
+	// if (RACSIGNAL_NEXT_ENABLED()) {
+	// 	RACSIGNAL_NEXT(cleanedSignalDescription(self.signal), cleanedDTraceString(self.innerSubscriber.description), cleanedDTraceString([value description]));
+	// }
 
 	[self.innerSubscriber sendNext:value];
 }
@@ -80,9 +80,9 @@ static const char *cleanedSignalDescription(RACSignal *signal) {
 - (void)sendError:(NSError *)error {
 	if (self.disposable.disposed) return;
 
-	if (RACSIGNAL_ERROR_ENABLED()) {
-		RACSIGNAL_ERROR(cleanedSignalDescription(self.signal), cleanedDTraceString(self.innerSubscriber.description), cleanedDTraceString(error.description));
-	}
+	// if (RACSIGNAL_ERROR_ENABLED()) {
+	// 	RACSIGNAL_ERROR(cleanedSignalDescription(self.signal), cleanedDTraceString(self.innerSubscriber.description), cleanedDTraceString(error.description));
+	// }
 
 	[self.innerSubscriber sendError:error];
 }
@@ -90,9 +90,9 @@ static const char *cleanedSignalDescription(RACSignal *signal) {
 - (void)sendCompleted {
 	if (self.disposable.disposed) return;
 
-	if (RACSIGNAL_COMPLETED_ENABLED()) {
-		RACSIGNAL_COMPLETED(cleanedSignalDescription(self.signal), cleanedDTraceString(self.innerSubscriber.description));
-	}
+	// if (RACSIGNAL_COMPLETED_ENABLED()) {
+	// 	RACSIGNAL_COMPLETED(cleanedSignalDescription(self.signal), cleanedDTraceString(self.innerSubscriber.description));
+	// }
 
 	[self.innerSubscriber sendCompleted];
 }

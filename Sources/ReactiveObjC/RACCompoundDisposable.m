@@ -7,7 +7,7 @@
 //
 
 #import "RACCompoundDisposable.h"
-#import "RACCompoundDisposableProvider.h"
+// #import "RACCompoundDisposableProvider.h"
 #import <pthread/pthread.h>
 
 // The number of child disposables for which space will be reserved directly in
@@ -156,9 +156,9 @@ static CFMutableArrayRef RACCreateDisposablesArray(void) {
 			if (_disposables == NULL) _disposables = RACCreateDisposablesArray();
 			CFArrayAppendValue(_disposables, (__bridge void *)disposable);
 
-			if (RACCOMPOUNDDISPOSABLE_ADDED_ENABLED()) {
-				RACCOMPOUNDDISPOSABLE_ADDED(self.description.UTF8String, disposable.description.UTF8String, CFArrayGetCount(_disposables) + RACCompoundDisposableInlineCount);
-			}
+			// if (RACCOMPOUNDDISPOSABLE_ADDED_ENABLED()) {
+			// 	RACCOMPOUNDDISPOSABLE_ADDED(self.description.UTF8String, disposable.description.UTF8String, CFArrayGetCount(_disposables) + RACCompoundDisposableInlineCount);
+			// }
 
 		#if RACCompoundDisposableInlineCount
 		foundSlot:;
@@ -193,9 +193,9 @@ static CFMutableArrayRef RACCreateDisposablesArray(void) {
 					}
 				}
 
-				if (RACCOMPOUNDDISPOSABLE_REMOVED_ENABLED()) {
-					RACCOMPOUNDDISPOSABLE_REMOVED(self.description.UTF8String, disposable.description.UTF8String, CFArrayGetCount(_disposables) + RACCompoundDisposableInlineCount);
-				}
+				// if (RACCOMPOUNDDISPOSABLE_REMOVED_ENABLED()) {
+				// 	RACCOMPOUNDDISPOSABLE_REMOVED(self.description.UTF8String, disposable.description.UTF8String, CFArrayGetCount(_disposables) + RACCompoundDisposableInlineCount);
+				// }
 			}
 		}
 	}
