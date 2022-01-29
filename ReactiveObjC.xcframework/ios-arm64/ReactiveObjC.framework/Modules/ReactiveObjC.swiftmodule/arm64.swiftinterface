@@ -1,0 +1,14 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 effective-4.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name ReactiveObjC
+@_exported import ReactiveObjC
+import Swift
+import _Concurrency
+@available(*, deprecated, renamed: "RACSignalError.notEnabled")
+public var RACCommandErrorNotEnabled: Swift.Int
+@available(*, deprecated, renamed: "RACSignalError.methodSwizzlingRace")
+public var RACSelectorSignalErrorMethodSwizzlingRace: ReactiveObjC.RACSelectorSignalError.Code
+@available(*, deprecated, renamed: "RACSignalError.noMatchingCase")
+public var RACSignalErrorNoMatchingCase: Swift.Int
+@available(*, deprecated, renamed: "RACSignalError.timedOut")
+public var RACSignalErrorTimedOut: Swift.Int
